@@ -1,0 +1,26 @@
+/*      Global Styles 
+---------------------------*/
+html {
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    margin: 0;
+}
+
+/*         Main Body        
+---------------------------*/
+main {
+    display: grid;
+    width: 100vh;
+    margin: 0 auto;
+    grid-template-columns: repeat(4, 25vh);
+    grid-template-rows: repeat(4, 25vh);
+}
+
+.java-div {
+    border: 1px solid black;
+}
