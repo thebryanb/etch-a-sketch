@@ -7,7 +7,9 @@ function populateGrid(size) {
     for (i = 0; i < numDivs; i++) {
         const div = document.createElement('div');
         div.classList.add('java-div')
+        div.setAttribute('id','jdiv'+i)
         main.appendChild(div);
+        colorArray[i] = 0;
     }
     divArray = document.querySelectorAll('div.java-div');
     window.addDivListeners();
@@ -17,15 +19,23 @@ function addDivListeners() {
         element.addEventListener('mouseover',changeColor);
     });
 }
-function changeColor(e, color='blue') {
-    // console.log(e.target);
-    e.target.style.background = color;
+function changeColor(e) {
+    // let a = Math.round(Math.random()*254);
+    // let b = Math.round(Math.random()*254);
+    // let c = Math.round(Math.random()*254);
+    let divId = Number(e.target.id.slice(4));
+    if(colorArray[divId] < 100) {
+        colorArray[divId] += 20;
+    }   
+    e.target.style.cssText = 'background: rgb(0%,0%,'+colorArray[divId]+'%);';
 }
 function clearGrid() {
-    console.log('clear grid')
     divArray.forEach(function(element) { 
         element.style.background = 'none';
     });
+    for(let i=0; i<colorArray.length; i++) {
+        colorArray[i] = 0;
+    }
 }
 function resizeGrid() {
     const newSize = Number(prompt('How many squares per side?'));
@@ -44,6 +54,7 @@ btnResize.addEventListener('click', resizeGrid);
 
 const main = document.querySelector('main');
 let divArray;
+let colorArray = [];
 window.populateGrid(4);
 
 
