@@ -9,7 +9,7 @@ function populateGrid(size) {
         div.classList.add('java-div')
         div.setAttribute('id','jdiv'+i)
         main.appendChild(div);
-        colorArray[i] = 0;
+        colorArray[i] = 100;
     }
     divArray = document.querySelectorAll('div.java-div');
     window.addDivListeners();
@@ -24,8 +24,8 @@ function changeColor(e) {
     // let b = Math.round(Math.random()*254);
     // let c = Math.round(Math.random()*254);
     let divId = Number(e.target.id.slice(4));
-    if(colorArray[divId] < 100) {
-        colorArray[divId] += 20;
+    if(colorArray[divId] > 0) {
+        colorArray[divId] -= 20;
     }   
     e.target.style.cssText = 'background: rgb(0%,0%,'+colorArray[divId]+'%);';
 }
@@ -34,7 +34,7 @@ function clearGrid() {
         element.style.background = 'none';
     });
     for(let i=0; i<colorArray.length; i++) {
-        colorArray[i] = 0;
+        colorArray[i] = 100;
     }
 }
 function resizeGrid() {
