@@ -11,7 +11,7 @@ function changeColor(e) {
 }
 
 
-let divArray = document.querySelectorAll('div');
+let divArray = document.querySelectorAll('div.java-div');
 divArray.forEach(function(element) {
     element.addEventListener('mouseover',changeColor);
 });
